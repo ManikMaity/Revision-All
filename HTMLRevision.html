@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Others</title>
+
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+    </style>
+
+  </head>
+  <body style="width: 100vw; height: 100vh; position: fixed;">
+    <form action="action_page.php" method="get" style="position: fixed;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;">
+      <div>
+        <label for="fname">First Name</label>
+        <input
+          type="text"
+          name="fname"
+          id="fname"
+          placeholder="Manik"
+          required
+        />
+      </div>
+      <br />
+
+      <div>
+        <label for="lName">Last Name</label>
+        <input
+          type="text"
+          name="lName"
+          id="lName"
+          placeholder="Maity"
+          required
+        />
+      </div>
+
+      <br />
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="manik@gmail.com" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" name="phone" id="phone">
+      </div>
+      <br />
+
+      <div>
+        <label for="date">Date</label>
+        <input type="date" name="date" id="date">
+
+        <label for="quantity">Quantity</label>
+        <input type="number" name="quantity" id="quantity" value="0" min="0">
+      </div>
+
+
+      <div>
+        <label for="mrs">Mrs.</label>
+        <input type="radio" name="prefix" id="mrs">
+        <label for="mr">Mr.</label>
+        <input type="radio" name="prefix" id="mr">
+
+        <label for="dr">Dr.</label>
+        <input type="radio" name="prefix" id="dr">
+      </div>
+      
+      <label for="state">State: </label>
+      <select name="state" id="state">
+        <option value="wb">West Bengal</option>
+        <option value="ap">Arunachal Pradesh</option>
+      </select>
+
+      <br/>
+      <div>
+        <label for="isStudent">Is Student?</label>
+        <input type="checkbox" name="check" id="isStudent">
+      </div>
+
+
+      <div>
+        <label for="pass">Password</label>
+        <input type="password" name="pass" id="pass" maxlength="20" required />
+      </div>
+      <br />
+
+      <div>
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+
+
+    
+
+    <!-- <iframe src="https://www.youtube.com//embed/PavYAOpVpJI?autoplay=1" allow="autoplay"  width="320" height="240"></iframe>
+    <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY" muted> -->
+    </iframe>
+    <video width="100%" height="100%"  autoplay muted>
+      <source src="videoplayback.mp4" type="video/mp4" style="width: 100vw; object-fit: cover;">
+    </video>
+
+  </body>
+</html>
