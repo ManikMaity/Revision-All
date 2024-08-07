@@ -1,0 +1,58 @@
+body{
+    background-color: black;
+    color: whitesmoke;
+    padding: 3rem;
+}
+
+
+.container1{
+    height: 300px;
+    padding: 10px;
+    width: 300px;
+    margin: 2rem;
+    border-radius: 5px;
+    background-color: #1f2321;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.container1 > div {
+    background-color: #3a3e3b;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: inset 0px -3px #2f3431;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.container1 > div:hover{
+    background-color: #c20dff;
+    box-shadow: inset 0px -3px #8c08b8;
+    transform: scale(1.015);
+
+}
+
+@keyframes pop{
+    from{
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.container1 img{
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    animation-name: pop;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in;
+}
