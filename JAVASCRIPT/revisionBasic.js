@@ -253,4 +253,54 @@ ageCalculateBtn.addEventListener("click", () => {
 }) */
 
 
-// 
+// Day 04 conditions
+
+const readyToDrive = (age) => {
+    let message = "";
+
+    switch (true) {
+        case age >= 18:
+            message = "Youre ready to drive";
+            break;
+        case age < 18 :
+            message = `Your are ${18 - age} years younger to drive`;
+            break;
+        default:
+            message = "Dont know"
+            break;
+    }
+
+    console.log(message);
+}
+
+// readyToDrive(16);
+
+// Write a program which tells the number of days in a month.
+//   Enter a month: January
+//   January has 31 days.
+
+//   Enter a month: JANUARY
+//   January has 31 day
+
+//   Enter a month: February
+//   February has 28 days.
+
+//   Enter a month: FEbruary
+//   February has 28 days.
+
+
+const howManyDays = (month = "") => {
+    const monthLower = month.toLowerCase();
+    let numOfdays = 30;
+    if (monthLower == "january" || monthLower == "march" || monthLower == "may" || monthLower == "july" || monthLower == "august" || monthLower == "october" || monthLower == "december"){
+        numOfdays = 31;
+    }
+    else if (monthLower == "february"){
+        numOfdays = 28;
+    }
+
+    return `${month} have ${numOfdays} of days.`;
+}
+
+const month = prompt("Enter the month: ");
+console.log(howManyDays(month));
