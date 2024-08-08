@@ -5,7 +5,7 @@
 }
 
 
-#btn-alert{
+button{
     padding: 10px 20px;
     background-color: rgb(38, 54, 48);
     border: none;
@@ -15,6 +15,6 @@
     color: white;
 }
 
-#btn-alert:hover{
+button:hover{
     opacity: 0.8;
 }

@@ -112,21 +112,145 @@ for (let i = 1; i <= 5; i++){
 
 
 
-const countWordInSentance = (sentance = "") => {
-    console.log(sentance.match(/love/gi).length);
-}
+// const countWordInSentance = (sentance = "") => {
+//     console.log(sentance.match(/love/gi).length);
+// }
 
-// countWordInSentance('Love is the best thing in this world. Some found their love and some are still looking for their love.');
+// // countWordInSentance('Love is the best thing in this world. Some found their love and some are still looking for their love.');
 
 
-const sumNumberFromStr = (str = "") => {
-    console.log(str.match(/\d+/gi).map(str => Number(str)).reduce((a, b) => a + b));
-}
+// const sumNumberFromStr = (str = "") => {
+//     console.log(str.match(/\d+/gi).map(str => Number(str)).reduce((a, b) => a + b));
+// }
 
-sumNumberFromStr('He earns 5000 euro from salary per month, 10000 euro annual bonus, 15000 euro online courses per month.');
+// sumNumberFromStr('He earns 5000 euro from salary per month, 10000 euro annual bonus, 15000 euro online courses per month.');
 
 
 
 
 
 // Day 3 
+
+// Truthy value -> All string ascept "" and all array acept [], boolean true , all number acept 0
+// Falsy value -> false, null, [], "", 0, NaH, undefined 
+
+const falsyValue = () => {
+    console.log(!null);
+    console.log(!NaN);
+    console.log([]== false);
+    console.log(0== false);
+    console.log(!undefined)
+    console.log(false == false)
+}
+
+// falsyValue()
+/*true
+true
+true
+true
+true
+true */
+
+
+// logical operator 
+const numerCompare = (a, b, c) => {
+    if (a > b && a > c){
+        return `${a} is biggest`
+    }
+    else if (b > a && b > c){
+        return `${b} is biggest`
+    }
+    else{
+        return `${c} is biggest`
+    }
+}
+
+// console.log(numerCompare(100, 20, 25)) // 100 is biggest
+
+// let a = 10;
+// console.log(a++); //post increament //10
+// console.log(++a); // pre-increameb //12
+
+
+// Date Object 
+
+
+const date = new Date();
+function dateGetting () {
+    console.log(date.toUTCString());
+}
+
+// dateGetting();
+const startTime = () => {
+    setInterval(() => {
+        document.querySelector('.time').innerText = date.toLocaleTimeString();
+    }, 500); 
+}
+
+// startTime();
+
+//There is no 'on' in both dragon and python
+
+const bothWordHaveText = (text = "", word = []) => {
+    if (word[0].includes(text) && word[word.length - 1].includes(text)){
+        console.log(`Both ${word[0]} and ${word[word.length - 1]} includes ${text}`);
+    }
+}
+
+// bothWordHaveText("on", ["dragon", "python"]);
+
+
+// Calculate the value of y (y = x2 + 6x + 9). Try to use different x values and figure out at what x value y is 0.
+/*
+function calculateY (x = 1){
+    console.log((x**2) + (6*x) + 9);
+}
+
+// calculateY(0);
+
+const calculateAge = (arr = []) => {
+    let ageYear, ageMonth, ageDay;
+    let bYear = Number(arr[0]), bMonth = Number(arr[1]), bDay = Number(arr[2]);
+    let currentDate = date.toLocaleDateString().split("/");
+    let cDay = Number(currentDate[0]), cMonth = Number(currentDate[1]), cYear = Number(currentDate[2])
+    if (bDay < cDay){
+        ageDay = cDay - bDay;
+    }
+    else{
+        cMonth--;
+        cDay+=30;
+        ageDay = cDay - bDay;
+    }
+
+    if (bMonth < cMonth){
+        ageMonth = cMonth - bMonth;
+    }
+    else{
+        cYear--;
+        cMonth+= 12;
+        ageMonth = cMonth - bMonth;
+    }
+
+    ageYear = cYear - bYear;
+
+    return `${ageYear} year, ${ageMonth} month, ${ageDay} days`;
+    
+}
+
+const ageCalculateBtn = document.querySelector(".age-calculate");
+const dateOfBirthEle = document.getElementById("dob");
+
+ageCalculateBtn.addEventListener("click", () => {
+    const dob  = dateOfBirthEle.value;
+    if (dob){
+        const dobArray = dob.split("-");
+        const age = calculateAge(dobArray);
+        alert(age);
+    }
+    else{
+        alert("Plaese enter date of birth");
+    }
+}) */
+
+
+// 
