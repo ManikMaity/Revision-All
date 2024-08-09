@@ -364,6 +364,18 @@ const countries = [
     'Japan',
     'Kenya'
   ]
+
+
+  const checkCountry = (item = "", arr = []) => {
+    const isThere = arr.indexOf(item);
+
+    isThere != -1 
+    ? console.log("It does exit", arr[isThere].toUpperCase(), isThere)
+    : arr.push("ETHIOPIA")
+  }
+
+  // checkCountry('Ethiopia',countries);
+
   
   const webTechs = [
     'HTML',
@@ -375,6 +387,7 @@ const countries = [
     'MongoDB'
   ]
 
+  /*
   const todoTextboxEle = document.getElementById("todoInput");
   const todoAddBtnEle = document.querySelector(".add-todo-btn");
   const todoListContainerEle = document.querySelector(".todo-list");
@@ -413,3 +426,114 @@ const countries = [
 
     
   })
+
+*/
+
+
+const frontEnd = ['HTML', 'CSS', 'JS', 'React', 'Redux']
+const backEnd = ['Node','Express', 'MongoDB']
+
+const concateTwoArray = (arr1 = [], arr2 =[]) => {
+  return arr1.concat(arr2);
+}
+
+// console.log(concateTwoArray(frontEnd, backEnd));
+
+const ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24];
+console.log(Math.max(...ages));
+
+
+
+// Develop a small script which generate any number of characters random id:
+//   fe3jo1gl124g
+//   xkqci4utda1lmbelpkm03rba
+
+const chars = "abcdefghijklmnopqrstwxyz1234567890~*&^%$#@!_ABCDEFGHIJKLMNOPQRSTWXYZ";
+
+const makeRandomStrig = (length = 8) => {
+  let strID = "";
+  for (let i = 0; i < length; i++){
+    strID += chars[Math.floor(Math.random()*chars.length)];
+  }
+
+  return strID;
+}
+
+// console.log(makeRandomStrig(10)); // MCH@k^Q0oM
+
+const charOfArrayAndLength = (arr = []) => {
+  const resultArr = arr.map((item) => {
+    let tempArr = [item, item.length];
+    return tempArr;
+  })
+
+  return resultArr;
+}
+
+
+console.log(charOfArrayAndLength(webTechs));
+
+// avoid mutation 
+// const webTechs2 = webTechs.slice(0);
+// webTechs2[1] = "SCSS";
+// console.log(webTechs2);
+// console.log(webTechs);
+
+/*
+
+[ 'HTML', 'SCSS', 'JavaScript', 'React', 'Redux', 'Node', 'MongoDB' ]
+[ 'HTML', 'CSS', 'JavaScript', 'React', 'Redux', 'Node', 'MongoDB' ]
+
+*/
+
+require("./countries.js");
+const countries2 = global.countries.slice(0);
+
+const findTheMiddleItem = (arr = []) => {
+  return arr[Math.floor(arr.length / 2)];
+}
+
+// console.log(findTheMiddleItem(countries2));
+
+
+// Divide the countries array into two equal arrays if it is even. 
+// If countries array is not even , one more country for the first half.
+
+function devideInTwoEualPart(arr = []) {
+  const arrLength = arr.length;
+  let arrPart1 = [], arrPart2 = [];
+  if (arrLength%2 != 0){
+    let middle = Math.ceil(arrLength/2);
+    arrPart1 = arr.slice(0, middle);
+    arrPart2 = arr.slice(middle);
+  }
+  else{
+    arrPart1 = arr.slice(0, arrLength/2);
+    arrPart2 = arr.slice(arrLength/2);
+  }
+
+  return [arrPart1, arrPart2];
+}
+
+
+// console.log(devideInTwoEualPart(countries2));
+// countries2.pop();
+// console.log(devideInTwoEualPart(countries2));
+
+
+// Extract all the countries containing two or more words from the countries array and print it as array
+const countries3 = countries2.slice(0);
+
+const getItemWithTwoOrMore = (countries = []) =>{
+  const resultArr = [];
+  for (let i = 0; i < countries.length; i++){
+    if(countries[i].split(" ").length > 1){
+      resultArr.push(countries[i]);
+    }
+  }
+
+  return resultArr;
+}
+
+
+console.log(getItemWithTwoOrMore(countries3));
