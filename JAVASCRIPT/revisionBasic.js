@@ -1084,4 +1084,65 @@ addToSkillSet(student3, "Express", 9, "backEnd");
 addToSkillSet(student3, "SQL", undefined, "dataScience");
 
 
-console.log(student3.skills.frontEnd, student3.skills.backEnd, student3.skills)
+// console.log(student3.skills.frontEnd, student3.skills.backEnd, student3.skills)
+
+
+// Error Handling
+// try {
+//   let lastName = 'Yetayeh'
+//   let fullName = fistName + ' ' + lastName
+// } catch (err) {
+//   console.log("Name of Error: ", err.name);
+//   console.log("Description: ", err.message)
+// }
+// finally{
+//   console.log("This will execute")
+// }
+
+// This keyword
+// This keyword doesnt work with the arrow func
+// This is the refrence to object 
+
+const person4 = {
+  name : "Manik Maity",
+  favfood : "water",
+  sayHello : function(){
+    console.log(`Hi!, My name is ${this.name}`);
+  },
+
+  eat : function (){
+    console.log(`${this.name}'s fav food is ${this.favfood}`)
+  }
+}
+
+// person4.sayHello();
+// person4.eat();
+
+//constractot
+function Car (make, model, year, color){
+  this.Make = make;
+  this.Model = model,
+  this.Year = year,
+  this.Color = color
+
+  this.drive = function (){
+    console.log(`You drive ${this.Make}`);
+  }
+
+}
+
+const car1 = new Car("Hondai", "i20", 2024, "red");
+const car2 = new Car("TVS", "Pulsure", 2024, "black");
+console.log(car1);
+car1.drive();
+console.log(car2);
+
+/*
+Car { make: 'Hondai', model: 'i20', year: 2024, color: 'red' }
+Car { make: 'TVS', model: 'Pulsure', year: 2024, color: 'black' }
+*/
+
+
+// Classes
+
+
