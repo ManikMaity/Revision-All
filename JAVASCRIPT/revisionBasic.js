@@ -536,4 +536,281 @@ const getItemWithTwoOrMore = (countries = []) =>{
 }
 
 
-console.log(getItemWithTwoOrMore(countries3));
+// console.log(getItemWithTwoOrMore(countries3));
+
+
+// function 
+
+// with unlimited peramiters
+
+function sum() {
+  let sum = 0;
+  for (let i = 0; i < arguments.length; i++){
+    sum+= arguments[i];
+  }
+
+  return sum;
+}
+//anonomus with unlimeited args and expresion function
+const multiply = function (...args){
+  return args.reduce((a, b) => a*b);
+}
+
+
+// console.log(sum(5, 10, 25)); //40
+// console.log(multiply(5, 10, 2)); //100
+
+
+// IIFE
+/*
+(()=>{
+
+  // inside IIFE there is function scope that why same name variable can be made 
+
+  function sum(a, b) {
+    return a + b;
+  }
+
+  console.log(sum(5, 10)) //15
+  for(let i = 0; i < 10; i++){
+    console.log(i);
+  }
+})()
+
+*/
+// Write a function generateColors which can generate any number of hexa or rgb colors.
+
+const makeRandomRGBColor = () =>{
+  let colorArr = [];
+  for (let i = 0; i < 3; i++){
+    colorArr.push(Math.floor(Math.random()*256));
+  }
+
+  return `rgb(${colorArr.join(", ")})`
+}
+
+const makeRandomHEXColor = () => {
+  let hexColor = "";
+  const chars = "123456789abcdef";
+  for (let i = 0; i < 6; i++){
+    hexColor += chars[Math.floor(Math.random()*15)];
+  }
+
+  return `#${hexColor}`;
+}
+
+const genarateColor = (colorType, num) => {
+  const resultArr = [];
+  if (colorType.toLowerCase() == "rgb"){
+    for (let i = 0; i < num; i++){
+      resultArr.push(makeRandomRGBColor());
+    }
+  }
+  else if (colorType.toLowerCase() == "hex"){
+    for (let i = 0; i < num; i++){
+      resultArr.push(makeRandomHEXColor());
+    }
+  }
+
+  return resultArr.length < 2 ? resultArr[0] : resultArr;
+}
+
+console.log(genarateColor("hex", 3));
+
+
+const person = {
+  firstName: 'Asabeneh',
+  age: 250,
+  country: 'Finland',
+  city:'Helsinki',
+  skills: ['HTML', 'CSS', 'JS'],
+  title: 'teacher',
+  address: {
+    street: 'Heitamienkatu 16',
+    pobox: 2002,
+    city: 'Helsinki'
+  },
+  getPersonInfo: function() {
+    return `I am ${this.firstName} and I live in ${this.city}, ${this.country}. I am ${this.age}.`
+  }
+}
+
+// copy the object 
+
+const person2 = Object.assign(person, {});
+console.log(person2)
+
+console.log(Object.keys(person2));
+console.log(Object.values(person2));
+// console.log(Object.values(person2));
+
+console.log(person2.hasOwnProperty("firstName"));
+
+
+
+const users = {
+  Alex: {
+    email: "alex@alex.com",
+    skills: ["HTML", "CSS", "JavaScript"],
+    age: 20,
+    isLoggedIn: false,
+    points: 30
+  },
+  Asab: {
+    email: "asab@asab.com",
+    skills: ["HTML", "CSS", "JavaScript", "Redux", "MongoDB", "Express", "React", "Node"],
+    age: 25,
+    isLoggedIn: false,
+    points: 50
+  },
+  Brook: {
+    email: "daniel@daniel.com",
+    skills: ["HTML", "CSS", "JavaScript", "React", "Redux"],
+    age: 30,
+    isLoggedIn: true,
+    points: 50
+  },
+  Daniel: {
+    email: "daniel@alex.com",
+    skills: ["HTML", "CSS", "JavaScript", "Python"],
+    age: 20,
+    isLoggedIn: false,
+    points: 40
+  },
+  John: {
+    email: "john@john.com",
+    skills: ["HTML", "CSS", "JavaScript", "React", "Redux", "Node.js"],
+    age: 20,
+    isLoggedIn: true,
+    points: 50
+  },
+  Thomas: {
+    email: "thomas@thomas.com",
+    skills: ["HTML", "CSS", "JavaScript", "React"],
+    age: 20,
+    isLoggedIn: false,
+    points: 40
+  },
+  Paul: {
+    email: "paul@paul.com",
+    skills: ["HTML", "CSS", "JavaScript", "MongoDB", "Express", "React", "Node"],
+    age: 20,
+    isLoggedIn: false,
+    points: 40
+  }
+}
+
+
+const findMERNDev = (obj = {}) => {
+  const keys = Object.keys(obj);
+  const resultArr = [];
+  keys.forEach(key => {
+    const skill = obj[key]?.skills;
+    if (skill.includes("MongoDB") && skill.includes("Express") && skill.includes("React") && skill.includes("Node")){
+      resultArr.push(key);
+    }
+  })
+
+  return resultArr? "Not Found" : resultArr;
+}
+
+// console.log(findMERNDev(users));
+/**
+ {
+        _id: 'ghderc',
+        username: 'Thomas',
+        email: 'thomas@thomas.com',
+        password: '123333',
+        createdAt:'08/01/2020 10:00 AM',
+        isLoggedIn: false
+    }
+ */
+
+
+require("./data.js")
+const usersData = global.users.slice(0);
+const productData = global.products.slice(0);
+const newUser = {
+  _id: 'ghderc',
+  username: 'Thomas',
+  email: 'thomas@thomas.com',
+  password: '123333',
+  createdAt:'08/01/2020 10:00 AM',
+  isLoggedIn: false
+};
+
+const signUp = (userInfo = {}, data =[]) => {
+  const isExit = data.findIndex(users => users.email == userInfo.email);
+  if (isExit == -1){
+    data.push(userInfo);
+    return "Added to database"
+  }
+  else{
+    return `${data[isExit]?.username} already exit`
+  }
+}
+
+function signIn(email = "", pass = "") {
+  for (let i = 0; i < usersData.length; i++){
+    if (usersData[i].email == email && usersData[i].password == pass){
+      usersData[i].isLoggedIn = true;
+      console.log("Your are loged in")
+      return;
+    }
+  }
+  return "User Not Found";
+}
+
+// console.log(signUp(newUser, usersData));
+
+console.log(signIn("martha@martha.com", "123222"));
+
+
+/*
+ {
+    _id: 'eedfcf',
+    name: 'mobile phone',
+    description: 'Huawei Honor',
+    price: 200,
+    ratings: [
+      { userId: 'fg12cy', rate: 5 },
+      { userId: 'zwf8md', rate: 4.5 }
+    ],
+    likes: []
+  },
+*/
+const rateTheProduct = (userID = "", rating, productID = "") => {
+  const product = productData.find(product => product["_id"] == productID);
+  const isRated = product?.ratings.findIndex(rating => rating.userId == userID);
+  if (isRated == -1){
+    product.ratings.push({userId : userID, rate: rating});
+    console.log("Rating is added")
+    return;
+  }
+  else{
+    console.log("Already Rated");
+    return;
+  }
+}
+
+rateTheProduct("mnaik2003", 4.5, "eedfcf");
+rateTheProduct("mnaik2003", 4.5, "eedfcf");
+console.log(productData[0].ratings);
+
+
+
+// callback 
+//foreach in callback
+
+const webTechs3 = webTechs.slice(0);
+
+
+function forEach(arr, cb) {
+  for (let i = 0; i < arr.length; i++){
+    cb(arr[i]);
+  }
+}
+
+forEach(webTechs, (tech) => {
+  console.log(tech.toUpperCase());
+})
