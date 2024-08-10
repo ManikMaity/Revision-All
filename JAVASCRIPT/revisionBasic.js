@@ -793,9 +793,9 @@ const rateTheProduct = (userID = "", rating, productID = "") => {
   }
 }
 
-rateTheProduct("mnaik2003", 4.5, "eedfcf");
-rateTheProduct("mnaik2003", 4.5, "eedfcf");
-console.log(productData[0].ratings);
+// rateTheProduct("mnaik2003", 4.5, "eedfcf");
+// rateTheProduct("mnaik2003", 4.5, "eedfcf");
+// console.log(productData[0].ratings);
 
 
 
@@ -811,6 +811,277 @@ function forEach(arr, cb) {
   }
 }
 
-forEach(webTechs, (tech) => {
-  console.log(tech.toUpperCase());
+// forEach(webTechs, (tech) => {
+//   console.log(tech.toUpperCase());
+// })
+
+// setInterval and setTimeout
+const sayHello = (name) => {
+  console.log(`Hello ${name}.`);
+}
+
+// setInterval(() => {
+//   sayHello("Manik");
+// }, 2000);
+
+const countries5 = ['Finland', 'Denmark', 'Sweden', 'Norway', 'Iceland'];
+countries5.forEach((country, ind) => {
+  console.log(country.toUpperCase(), ind);
 })
+
+/**
+ * FINLAND 0
+DENMARK 1
+SWEDEN 2
+NORWAY 3
+ICELAND 4
+ */
+
+
+const upperCaseCountry = countries5.map(country => country.toUpperCase());
+console.log(upperCaseCountry);
+
+const scores = [
+  { name: 'Asabeneh', score: 95 },
+   { name: 'Lidiya', score: 98 },
+  { name: 'Mathias', score: 80 },
+  { name: 'Elias', score: 50 },
+  { name: 'Martha', score: 85 },
+  { name: 'John', score: 100 },
+]
+
+
+const enghtyAndGreaterScore = scores.filter(player => player.score >= 80);
+console.log(enghtyAndGreaterScore)
+
+
+const users4 = [
+  { name: 'Asabeneh', age: 150 },
+  { name: 'Brook', age: 50 },
+  { name: 'Eyob', age: 100 },
+  { name: 'Elias', age: 22 },
+]
+
+
+const sortedUserByAge = users4.sort((user1, user2) => {
+  return user1.age > user2.age ? -1 : 1;
+})
+
+console.log(sortedUserByAge);
+
+
+const products2 = [
+  { product: 'banana', price: 3 },
+  { product: 'mango', price: 6 },
+  { product: 'potato', price: ' ' },
+  { product: 'avocado', price: 8 },
+  { product: 'coffee', price: 10 },
+  { product: 'tea', price: '' },
+]
+
+
+const totalPricOfProduct = products2.filter(product => typeof product.price == "number").reduce((p1, p2) => p1 + p2.price, 0);
+// console.log(totalPricOfProduct); //27
+
+
+const totalPriceOnlyReduce = products2.reduce((acc, product) => {
+  return typeof product.price == "number" ? acc + product.price : acc + 0;
+}, 0)
+
+// console.log(totalPriceOnlyReduce) // 27
+
+/*{
+  "name": "Afghanistan",
+  "capital": "Kabul",
+  "languages": [
+      "Pashto",
+      "Uzbek",
+      "Turkmen"
+  ],
+  "population": 40218234,
+  "flag": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg",
+  "region": "Asia",
+  "area": 652230
+},*/
+
+
+require("./countries_data.js");
+const countriesData = global.countries_data.slice(0);
+// console.log(countriesData[0]);
+
+const mostSpokenLanguage = (countries = countriesData, num = 10) => {
+  // filterout country without language 
+  const countryWithLanguage = countries.filter(country => country.hasOwnProperty("languages"));
+
+  // Geting all the language 
+  const allLnag = countryWithLanguage.map(country => country.languages).flat()
+
+  //geting unique value
+  const uniqueLang = [...new Set(allLnag)];
+
+  //making new arr
+  const langAndCountArr = uniqueLang.map(uniLang => {
+    const totalLangCount = allLnag.filter(lang => lang == uniLang).length;
+    return {country: uniLang, count: totalLangCount};
+  }).sort((lang1, lnag2) => {
+    return lang1.count > lnag2.count ? -1 : 1
+  }).slice(0, num);
+
+  console.log(langAndCountArr);
+}
+
+
+const countries6 = countriesData.slice(0);
+
+const mostPopulatedCountries = (countriesArr = countries6, numOfOutput = 3) => {
+
+    // making and country and population arr
+    const countriesAndPopulation = countriesArr.map(country => {
+      const tempObj = {};
+      tempObj.country = country.name;
+      tempObj.population = country.population;
+      return tempObj;
+    }).sort((country1, country2) => {
+      return country1.population > country2.population ? -1 : 1;
+    }).slice(0, numOfOutput);
+
+
+    return countriesAndPopulation;
+
+} 
+
+// console.log(mostPopulatedCountries(countries6, 3))
+
+// console.log(mostSpokenLanguage());
+
+
+// spread opertaors 
+const countries7 = [['Finland', 'Helsinki'], [undefined, 'Stockholm'], ['Norway', 'Oslo']]
+
+for (const [country1 = "India", country2] of countries7){
+  console.log(country1);
+}
+
+const person3 = {
+  firstName: 'Asabeneh',
+  lastName: 'Yetayeh',
+  age: 250,
+  country: 'Finland',
+  job: 'Instructor and Developer',
+  skills: [
+    'HTML',
+    'CSS',
+    'JavaScript',
+    'React',
+    'Redux',
+    'Node',
+    'MongoDB',
+    'Python',
+    'D3.js'
+  ],
+  languages: ['Amharic', 'English', 'Suomi(Finnish)']
+};
+
+
+
+const makeIntro = ({firstName, lastName, age, country, job, skills, languages}) => {
+  const skillsText = `${skills.slice(0, - 1).join(", ")} and ${skills[skills.length -1]}`
+  const languageText = `${languages.slice(0, -1).join(", ")} and a little bit of ${languages[languages.length - 1]}`;
+  const intro = `${firstName} ${lastName} lives in ${country}. He is ${age} years old. He is a ${job}. He teaches ${skillsText}. He speakes ${languageText}.`;
+  return intro;
+}
+
+console.log(makeIntro(person3));
+
+// Asabeneh Yetayeh lives in Finland. He is  250 years old. He is an Instructor and Developer. He teaches HTML, CSS, JavaScript, React, Redux, Node, MongoDB, Python and D3.js. He speaks Amharic, English and a little bit of Suomi(Finnish)
+
+
+const frontEnd2 = ['HTML', 'CSS', 'JS', 'React']
+const backEnd2 = ['Node', 'Express', 'MongoDB']
+
+const fullStake = [...frontEnd2, ...backEnd2];
+const [skill1, skill2, ...restskill] = frontEnd2; 
+console.log(restskill); // [ 'JS', 'React' ]
+
+
+// to copy and change obj value
+const user5 = {
+  name:'Asabeneh',
+  title:'Programmer',
+  country:'Finland',
+  city:'Helsinki'
+}
+
+
+const userWithNewName = {...user5, name:"Mnaik"};
+console.log(userWithNewName);
+
+/*
+{
+  name: 'Mnaik',
+  title: 'Programmer',
+  country: 'Finland',
+  city: 'Helsinki'
+}
+*/
+
+
+const students2 = [
+  ['David', ['HTM', 'CSS', 'JS', 'React'], [98, 85, 90, 95]],
+  ['John', ['HTM', 'CSS', 'JS', 'React'], [85, 80, 85, 80]]
+]
+
+/*
+{
+        name: 'David',
+        skills: ['HTM','CSS','JS','React'],
+        scores: [98,85,90,95]
+      },
+*/
+
+const studentArrToObj = (arr = []) => {
+  const newStudentObj = arr.map(([name, skills, score]) => {
+    return {name: name, skills: skills, scores: score};
+  })
+
+  return newStudentObj;
+}
+
+// console.log(studentArrToObj(students2));
+
+
+const student3 = {
+  name: 'David',
+  age: 25,
+  skills: {
+    frontEnd: [
+      { skill: 'HTML', level: 10 },
+      { skill: 'CSS', level: 8 },
+      { skill: 'JS', level: 8 },
+      { skill: 'React', level: 9 }
+    ],
+    backEnd: [
+      { skill: 'Node',level: 7 },
+      { skill: 'GraphQL', level: 8 },
+    ],
+    dataBase:[
+      { skill: 'MongoDB', level: 7.5 },
+    ],
+    dataScience:['Python', 'R', 'D3.js']
+  }
+}
+
+const newStudent = {...student3};
+
+const addToSkillSet = ({name, age, skills}, skill, level, skillset = "") => {
+  const skilltoAdd = level? {skill: skill, level: level} : skill;
+  skills[skillset].push(skilltoAdd);
+}
+
+
+addToSkillSet(student3, "Bootstrap", 8, "frontEnd");
+addToSkillSet(student3, "Express", 9, "backEnd");
+addToSkillSet(student3, "SQL", undefined, "dataScience");
+
+
+console.log(student3.skills.frontEnd, student3.skills.backEnd, student3.skills)
