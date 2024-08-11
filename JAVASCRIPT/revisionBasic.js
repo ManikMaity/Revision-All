@@ -1062,7 +1062,7 @@ const student3 = {
     ],
     backEnd: [
       { skill: 'Node',level: 7 },
-      { skill: 'GraphQL', level: 8 },
+      { skill: 'GraphQL', level: 8 }, 
     ],
     dataBase:[
       { skill: 'MongoDB', level: 7.5 },

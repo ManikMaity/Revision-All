@@ -1,0 +1,130 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #252525;
+    height: 100vh;
+    font-size: 1.2rem;
+}
+
+.main-container{
+    max-width: 600px;
+    
+    min-height: 100px;
+    background-image: linear-gradient(rgb(73, 78, 51), rgb(2, 17, 2));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2%;
+    border-radius: 10px;
+    gap: 10px;
+    color: white;
+}
+
+
+.main-container .search-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.search-container input{
+    height: 40px;
+    border: none;
+    width: 80%;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.search-container button{
+    border: none;
+    width: 40px;
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.search-btn button i{
+    pointer-events: none;
+}
+
+.search-btn:hover{
+    opacity: 0.6;
+}
+
+.display-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-image{
+    width: 90%;
+    display: grid;
+    padding: 20px;
+    place-content: center;
+
+}
+
+.weather-image p{
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.weather-image img{
+    width: 150px;
+    height: 150px;
+}
+
+
+.temp-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.temp-container .temp-data{
+    font-size: 4rem;
+    font-weight: bolder;
+}
+
+.temp-container .area{
+    font-size: 2rem;
+    font-weight: 200;
+}
+
+
+.other-info{
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 20px;
+    height: 50px;
+    width: 100%;
+}
+
+.other-info-card{
+    height: 100%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.other-info-card img{
+    height: 40px;
+}
+
+.other-info-card div > p:first-child{
+    font-size: 1.5rem;
+    font-weight: bold;
+}

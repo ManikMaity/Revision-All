@@ -227,11 +227,20 @@ function start(){
 
 
 function pause(){
+    if (isRunning){
+        clearInterval(timer);
+        elapsedTime = Date.now() - startTime;
+        isRunning = false;
+    }
 
 }
 
 function reset(){
-
+    startTime = 0;
+    elapsedTime = 0;
+    isRunning = false;
+    clearInterval(timer);
+    stopWatchTextEle.innerText = `00:00:00:00`
 }
 
 function update(){
@@ -241,7 +250,84 @@ function update(){
     let munites = Math.floor(elapsedTime / (1000 * 60) % 60);
     let seconds = Math.floor(elapsedTime / 100 % 60);
     let miliseconds = Math.floor(elapsedTime % 1000 / 10);
-    stopWatchTextEle.innerText = `${hours}:${munites}:${seconds}:${miliseconds}`
+    stopWatchTextEle.innerText = `${hours.toString().padStart(2, 0)}:${munites.toString().padStart(2, 0)}:${seconds.toString().padStart(2, 0)}:${miliseconds.toString().padStart(2, 0)}`
 }
 
 startBtnEle.addEventListener("click", start);
+pauseBtnEle.addEventListener("click", pause);
+restartBtnEle.addEventListener("click", reset)
+
+console.log("Other func ends here..................... ")
+//ES6 module
+import { localStorageAPI } from "./mathUtil.js";
+const todoInputEle = document.getElementById("todoInput");
+const todoAddBtnEle = document.querySelector(".add-todo-btn");
+const todoContainerEle = document.querySelector(".todo-list");
+
+
+let todo1 = "This is a todo";
+// saveTodo(todo1);
+
+
+const htmlEleMaker = (obj) => {
+    const div = document.createElement("div");
+    div.classList.add("todo-item");
+    div.setAttribute("id", obj.todoID);
+    // 
+    if (obj.marked){
+        div.classList.add("done-todo")
+        div.innerHTML = `
+        <p style="text-decoration: line-through;">${obj?.todoText}</p>
+        <p class="todo-item-date">${obj.todoTime}</p>
+    `;
+    }
+    else{
+        div.innerHTML = `
+        <p>${obj?.todoText}</p>
+        <p class="todo-item-date">${obj.todoTime}</p>
+    `;
+    }
+    
+    div.addEventListener("dblclick", (e) => {
+        const areYouSure = confirm("Do you realy wanna delete this?");
+        if (areYouSure){
+            localStorageAPI.deleteTodo(Number(e.target.id));
+            renderAllTodo(localStorageAPI.getTodoFromLocalStorage());
+        }
+    })
+
+    div.addEventListener("click", (e) => {
+        localStorageAPI.mark(Number(e.target.id));
+        renderAllTodo();
+    })
+    return div;
+}
+
+
+const renderAllTodo = (todos = localStorageAPI.getTodoFromLocalStorage()) => {
+    todoContainerEle.innerHTML = ``;
+    todos.forEach(todo => {
+        todoContainerEle.insertAdjacentElement("beforeend", htmlEleMaker(todo));
+    })
+    todoContainerEle.scrollTop = 0;
+}
+
+renderAllTodo(localStorageAPI.getTodoFromLocalStorage());
+
+
+const addTodo = (txt = "")=> {
+    localStorageAPI.setItemToTodo(txt);
+    renderAllTodo(localStorageAPI.getTodoFromLocalStorage());
+}
+
+
+todoAddBtnEle.addEventListener("click", function clickEvent(){
+    if (!todoInputEle.value){
+        alert("Type your todo first!");
+        todoInputEle.value = " ";
+    }
+    else{
+        addTodo(todoInputEle.value);
+        todoInputEle.value = "";
+    }
+})

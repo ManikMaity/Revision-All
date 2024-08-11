@@ -53,5 +53,17 @@ input[type="text"]{
     border: 1px solid #000;
     cursor: pointer;
     margin-bottom: 10px;
+    background-color: #2d5a54;
+    color: white;
     user-select: none;
+}
+
+.todo .todo-item-date{
+    font-size: 0.9rem;
+    color: rgb(255, 255, 255);
+}
+
+.done-todo{
+    background-color: #773b3b !important;
+    opacity: 0.3 !important;
 }

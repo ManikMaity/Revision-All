@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <div class="main-container">
+        <h2>Weather App</h2>
+        <div class="search-container">
+            <input type="text" name="searchBox" id="searchBox" placeholder="Enter city here...">
+            <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <div class="display-container">
+
+            <div class="weather-image">
+                <img id="weatherImg" src="./images/sun.png" alt="weather-image">
+                <p class="weather-text">Clear</p>
+            </div>
+
+            <div class="temp-container">
+                <p class="temp-data">22°C</p>
+                <p class="area">New York</p>
+            </div>
+
+            <div class="other-info">
+
+                <div class="humidity other-info-card">
+                    <img src="./humidity.png" alt="">
+                    <div>
+                        <p class="humidity-text">64%</p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+
+
+                <div class="wendspeed other-info-card">
+                    <img src="./images/storm.png" alt="">
+                    <div>
+                        <p class="windspeed-text">64%</p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
