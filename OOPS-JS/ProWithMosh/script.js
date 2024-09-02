@@ -99,17 +99,69 @@ function newCircle (radius){
     function computeOptimumLocation (){
 
     }
+    // this.getReadonlyDeafultLoaction = function (){
+    //     return defaultLocation;
+    // }
 
     this.draw = function(){
         computeOptimumLocation();
         console.log(defaultLocation)
         console.log("draw", this.radius);
     }
+
+
+    // its a getter which used to read property
+    Object.defineProperty(this, "defaultLocation", {
+        get : function(){
+            return defaultLocation;
+        }
+    })
 }
 
 const c1 = new newCircle(40);
-console.log(c1.draw());
+console.log(c1.defaultLocation);
+
+// setter and getter
+
+// console.log("Loca->", c1.getReadonlyDeafultLoaction()); 
 
 
 
-// setter and getter 
+
+
+
+function MakeStopWatch(){
+    let isStart = false;
+    let startTime = 0;
+    let endTime = 0;
+    this.duration = 0;
+
+    this.start = function() {
+        if (isStart == true){
+            throw new Error("Stopwatch already started");   
+        }
+        else {
+            isStart = true;
+            startTime = new Date();
+        }   
+    }
+
+    this.stop = function (){
+        if (isStart == false){
+            throw new Error("Stopwatch not started yet");
+        }
+        else {
+            endTime = new Date();
+            isStart = false;
+            this.duration += (endTime.getTime() - startTime.getTime())/1000;
+        }
+    }
+
+    this.reset = function (){
+        this.duration = 0;
+        isStart = false;
+        startTime = 0;
+        endTime = 0;
+    }
+      
+}
